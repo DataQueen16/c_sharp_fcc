@@ -6,44 +6,47 @@ namespace freecodecamp_project
     {
         static void Main(string[] args)
         {
-            /* Console.Write("Enter your name please: ");
-             string name = Console.ReadLine();
-             Console.Write("Please enter your age: ");
-             int age = Convert.ToInt32(Console.ReadLine());
-             
-             SayHi(name, age);*/
-
-            SayHi("Michelle", 23);
-            SayHi("Julian", 32);
-            SayHi("Ned", 38);
-            SayHi("Jen", 42);
-
-            int cubedNumber = Cube(5);
-
-            Console.WriteLine(cubedNumber);
-
-            bool isFemale = true;
-            bool isTall = false;
-
-            if (isFemale || isTall) 
-            {
-                Console.WriteLine("You are female and you are tall");
-            } else 
-            {
-                Console.WriteLine("You are either not female or not tall or both");
-            }
-
+            GetVariables();
             Console.ReadLine();
         }
 
-        static void SayHi(string name, int age) 
+        static void GetVariables()
         {
-            Console.WriteLine("Hello " + name + ", you are " + age);
+            Console.Write("Enter a number: ");
+            double num1 = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Enter Operator: ");
+            string op = Console.ReadLine();
+
+            Console.Write("Enter another number: ");
+            double num2 = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine(Calculator(num1, op, num2));
         }
 
-        static int Cube(int num)
+        static double Calculator(double num1, string op, double num2)
         {
-            int result = num * num * num;
+            double result = 0.00;
+            switch (op)
+            {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    result = num1 / num2;
+                    break;
+                default:
+                    Console.WriteLine("Please choose one of the following: +, -, *, /");
+                    GetVariables();
+                    break;
+            }
+
             return result;
         }
     }
